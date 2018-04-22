@@ -114,8 +114,8 @@ def play(board)
   until (over?(board) == true)
     turn(board)
   end
-  if won?(board) == true
-    puts "Congratulations !"
+  if won?(board).class == Array
+    return board[won?(board)[0]]
   elsif draw?(board) == true
     puts "Cat's Game!"
   end
