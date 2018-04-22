@@ -112,7 +112,7 @@ end
 
 def play(board)
   until (over?(board) == true)
-    play(board)
+    turn(board)
   end
   if won?(board).class == Array
     puts "Congratulations #{board[won?(board)[0]]}!"
