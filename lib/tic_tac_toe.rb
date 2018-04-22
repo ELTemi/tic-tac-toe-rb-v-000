@@ -32,20 +32,19 @@ def position_taken?(board, location)
 end
 
 def valid_move?(board, position)
-  position.between?(0,8) && !position_taken?(board, position)
+  position.between?(0, 8) && !position_taken?(board, position)
 end
 
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
-  if valid_move?(board, index)
-    move(board, index, current_player(board))
-    display_board(board)
-  else
+  if !valid_move?(board, index)
     turn(board)
   end
-end
+    move(board, index, current_player(board))
+    display_board(board)
+  end
 
 def turn_count(board)
   count = 0
@@ -112,13 +111,12 @@ def winner(board)
 end
 
 def play(board)
-  # binding.pry
   until (over?(board) == true)
     turn(board)
   end
   if won?(board) == true
-  puts "Congratulations #{winner(board)}!"
+    puts "Congratulations {board[won?(board)[0]]}!"
   elsif draw?(board) == true
-  puts "Cat's Game!"
+    puts "Cat's Game!"
   end
 end
